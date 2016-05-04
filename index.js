@@ -58,6 +58,14 @@ bot.onVideoMessage((message) => {
   sendGeneric(message.from);
 });
 
+bot.onStickerMessage((message) => {
+  sendGeneric(message.from);
+});
+
+bot.onScanDataMessage((message) => {
+  sendGeneric(message.from);
+});
+
 function sendGeneric(sendTo) {
   mixpanel.track('generic_message');
   var myMessage = Bot.Message.text("Hi! I can send you sounds or tell you more about FoundSounds!");
