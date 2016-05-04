@@ -1,0 +1,23 @@
+{
+  "name": "foundsounds-bot-kik",
+  "version": "0.0.1",
+  "description": "Kik bot for FoundSounds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djensenius/FoundSounds-Bot-Kik.git"
+  },
+  "author": "David Jensenius",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/djensenius/FoundSounds-Bot-Kik/issues"
+  },
+  "homepage": "https://github.com/djensenius/FoundSounds-Bot-Kik#readme",
+  "dependencies": {
+    "@kikinteractive/kik": "^2.0.2",
+    "mixpanel": "^0.4.0"
+  }
+}
