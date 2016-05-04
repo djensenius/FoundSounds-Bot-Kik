@@ -23,7 +23,7 @@ bot.updateBotConfiguration();
 
 bot.onStartChattingMessage((message) => {
   bot.getUserProfile(message.from).then((user) => {
-    message.reply(`Hey ${user.firstName}!`);
+    message.reply(`Hi ${user.firstName}! I can send you sounds or tell you more about FoundSounds!`);
     message.addResponseKeyboard(options, true);
   });
 });
@@ -42,12 +42,28 @@ bot.onTextMessage((message) => {
     myMessage = myMessage.text("I'm so happy you want to learn more about FoundSounds! I am a bot.");
     sendInfo(message.from);
   } else {
-    mixpanel.track('generic_message');
-    myMessage = myMessage.text("Hi! I can send you sounds or tell you more about FoundSounds!");
-    myMessage.addResponseKeyboard(options, false);
-    message = message.reply(myMessage);
+    sendGeneric(message.from);
   }
 });
+
+bot.onLinkMessage((message) => {
+  sendGeneric(message.from);
+});
+
+bot.onPictureMessage((message) => {
+  sendGeneric(message.from);
+});
+
+bot.onVideoMessage((message) => {
+  sendGeneric(message.from);
+});
+
+function sendGeneric(sendTo) {
+  mixpanel.track('generic_message');
+  var myMessage = Bot.Message.text("Hi! I can send you sounds or tell you more about FoundSounds!");
+  myMessage.addResponseKeyboard(options, false);
+  bot.send(myMessage, sendTo);
+}
 
 function sendRecent(sendTo) {
   var myMessage = Bot.Message.text("Finding a recent sound!");
